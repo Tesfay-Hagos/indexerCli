@@ -53,38 +53,30 @@ func init() {
 
 func writeConfig() {
 	con := readFile()
-	config := Config{
-		PgConnection:       PgConnection,
-		CometBftEndpoint:   CometBftEndpoint,
-		ListenAddress:      ListenAddress,
-		PollFrequency:      PollFrequency,
-		MaxBlockPagination: MaxBlockPagination,
-		MaxTxPagination:    MaxTxPagination,
-	}
-	if config.PgConnection == "" {
-		config.PgConnection = con.PgConnection
+	if PgConnection != "" {
+		con.PgConnection = PgConnection
 	}
 
-	if config.CometBftEndpoint == "" {
-		config.CometBftEndpoint = con.CometBftEndpoint
+	if CometBftEndpoint != "" {
+		con.CometBftEndpoint = CometBftEndpoint
 	}
 
-	if config.ListenAddress == "" {
-		config.ListenAddress = con.ListenAddress
+	if ListenAddress != "" {
+		con.ListenAddress = ListenAddress
 	}
 
-	if config.PollFrequency == 0 {
-		config.PollFrequency = con.PollFrequency
+	if PollFrequency != 0 {
+		con.PollFrequency = PollFrequency
 	}
 
-	if config.MaxBlockPagination == 0 {
-		config.MaxBlockPagination = con.MaxBlockPagination
+	if MaxBlockPagination != 0 {
+		con.MaxBlockPagination = MaxBlockPagination
 	}
 
-	if config.MaxTxPagination == 0 {
-		config.MaxTxPagination = con.MaxTxPagination
+	if MaxTxPagination != 0 {
+		con.MaxTxPagination = MaxTxPagination
 	}
-	data, err := yaml.Marshal(config)
+	data, err := yaml.Marshal(con)
 	if err != nil {
 		fmt.Printf("Error marshalling config to YAML: %v\n", err)
 		return
