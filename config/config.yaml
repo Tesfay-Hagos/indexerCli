@@ -1,0 +1,6 @@
+pg_connection: host=localhost dbname=mydb user=myuser password=mypassword
+cometbft_endpoint: http://localhost:8080
+listen_address: http://localhost:3000
+poll_frequency: 5
+max_block_pagination: 30
+max_tx_pagination: 30
